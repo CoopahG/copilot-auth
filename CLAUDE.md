@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-`copilot-auth` is a zero-dependency TypeScript library that implements the GitHub Copilot OAuth device flow and provides OpenAI-compatible client configuration with auto-refreshing session tokens. Requires an active GitHub Copilot subscription.
+`@coopah/copilot-auth` is a zero-dependency TypeScript library that implements the GitHub Copilot OAuth device flow and provides OpenAI-compatible client configuration with auto-refreshing session tokens. Requires an active GitHub Copilot subscription.
 
 ## Commands
 
@@ -18,8 +18,8 @@ No test framework or linter is configured.
 
 The package has two entry points:
 
-- `copilot-auth` → `src/index.ts` → re-exports from `src/auth.ts`
-- `copilot-auth/express` → `src/express.ts` → Express route helpers
+- `@coopah/copilot-auth` → `src/index.ts` → re-exports from `src/auth.ts`
+- `@coopah/copilot-auth/express` → `src/express.ts` → Express route helpers
 
 **`src/auth.ts`** — The `CopilotAuth` class handles:
 1. **GitHub OAuth device flow** (`startDeviceFlow` / `pollDeviceFlow` / `login`) — exchanges a GitHub client ID for a user token via the device code grant
@@ -34,4 +34,4 @@ The package has two entry points:
 - **ESM-only** (`"type": "module"` in package.json, `module: "ESNext"` in tsconfig)
 - **Zero runtime dependencies** — uses native `fetch` (Node 18+); `express` is an optional peer dependency
 - **`TokenStorage` interface** — consumers provide their own persistence; the library never touches the filesystem or env vars directly
-- **`createCopilotClient` was removed** — the README still references it, but the most recent commit stripped out the OpenAI client factory and React hooks to focus on core auth. `getOpenAIClientConfig()` returns `{ apiKey, baseURL, defaultHeaders }` for manual client construction
+- **No client factory** — consumers construct their own `OpenAI` instance using the `{ apiKey, baseURL, defaultHeaders }` from `getOpenAIClientConfig()`. Use `getCredentialsIfChanged()` to detect when the session token rotates and rebuild the client only when needed.
