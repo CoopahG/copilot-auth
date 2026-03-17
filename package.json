@@ -1,0 +1,45 @@
+{
+  "name": "@stuur/copilot-auth",
+  "version": "0.1.0",
+  "description": "GitHub Copilot OAuth device flow + OpenAI-compatible client with auto-refreshing tokens",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./express": {
+      "import": "./dist/express.js",
+      "types": "./dist/express.d.ts"
+    },
+    "./react": {
+      "import": "./dist/react/index.js",
+      "types": "./dist/react/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "openai": "^6.23.0"
+  },
+  "peerDependencies": {
+    "express": ">=4",
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "express": { "optional": true },
+    "react": { "optional": true }
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/react": "^19.0.0",
+    "typescript": "^5.8.0"
+  },
+  "license": "MIT"
+}
