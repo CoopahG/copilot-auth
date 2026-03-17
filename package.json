@@ -1,5 +1,5 @@
 {
-  "name": "copilot-auth",
+  "name": "@coopah/copilot-auth",
   "version": "0.1.0",
   "description": "GitHub Copilot OAuth device flow + OpenAI-compatible client with auto-refreshing tokens",
   "type": "module",
