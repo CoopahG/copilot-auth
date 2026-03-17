@@ -1,12 +1,9 @@
-// Core auth
 export { CopilotAuth } from './auth';
 export type {
+    CopilotAuthOptions,
     TokenStorage,
     DeviceFlowResponse,
     SessionCredentials,
     DevicePollResult,
+    OpenAIClientConfig,
 } from './auth';
-
-// OpenAI client factory
-export { createCopilotClient, COPILOT_MODEL_MULTIPLIERS } from './client';
-export type { CopilotClientOptions, CopilotClient } from './client';

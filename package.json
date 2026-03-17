@@ -1,5 +1,5 @@
 {
-  "name": "@stuur/copilot-auth",
+  "name": "copilot-auth",
   "version": "0.1.0",
   "description": "GitHub Copilot OAuth device flow + OpenAI-compatible client with auto-refreshing tokens",
   "type": "module",
@@ -11,35 +11,48 @@
     "./express": {
       "import": "./dist/express.js",
       "types": "./dist/express.d.ts"
-    },
-    "./react": {
-      "import": "./dist/react/index.js",
-      "types": "./dist/react/index.d.ts"
     }
   },
   "files": [
     "dist"
   ],
+  "sideEffects": false,
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
     "prepublishOnly": "npm run build"
   },
-  "dependencies": {
-    "openai": "^6.23.0"
-  },
   "peerDependencies": {
-    "express": ">=4",
-    "react": ">=18"
+    "express": ">=4"
   },
   "peerDependenciesMeta": {
-    "express": { "optional": true },
-    "react": { "optional": true }
+    "express": { "optional": true }
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
-    "@types/react": "^19.0.0",
     "typescript": "^5.8.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "author": "coopah",
+  "keywords": [
+    "github",
+    "copilot",
+    "oauth",
+    "device-flow",
+    "openai",
+    "ai",
+    "llm",
+    "express"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coopah/copilot-auth.git"
+  },
+  "homepage": "https://github.com/coopah/copilot-auth#readme",
+  "bugs": {
+    "url": "https://github.com/coopah/copilot-auth/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  }
 }

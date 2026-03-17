@@ -19,7 +19,7 @@ export interface CopilotRoutesOptions {
  * Returns the CopilotAuth instance (reuse it to create a client later).
  */
 export function mountCopilotRoutes(options: CopilotRoutesOptions): CopilotAuth {
-    const auth = options.auth ?? new CopilotAuth(options.storage);
+    const auth = options.auth ?? new CopilotAuth({ storage: options.storage });
     const { router } = options;
 
     router.post('/copilot/device-code', async (_req: Request, res: Response) => {
